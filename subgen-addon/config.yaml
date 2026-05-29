@@ -1,5 +1,5 @@
-name: "SubGen - Whisper Subtitles for Bazarr"
-description: "Automatically generates subtitles using OpenAI Whisper using ASR API. Useful as subtitle provider in Bazarr."
+name: "SubGen - Whisper Subtitles voor Bazarr"
+description: "Genereert automatisch ondertitels met OpenAI Whisper via de ASR API. Werkt als subtitle provider in Bazarr."
 version: "1.0.1"
 slug: "subgen"
 init: false
@@ -10,30 +10,17 @@ arch:
 ports:
   9000/tcp: 9000
 ports_description:
-  9000/tcp: "ASR webservice port (use this in Bazarr)"
+  9000/tcp: "ASR webservice poort (gebruik dit in Bazarr)"
 
-options:
+environment:
   WHISPER_MODEL: "small"
   TRANSCRIBE_DEVICE: "cpu"
-  CONCURRENT_TRANSCRIPTIONS: 1
-  WHISPER_THREADS: 4
+  CONCURRENT_TRANSCRIPTIONS: "1"
+  WHISPER_THREADS: "4"
   TRANSCRIBE_OR_TRANSLATE: "transcribe"
-  WEBHOOKPORT: 9000
-  PROCADDEDMEDIA: false
-  PROCMEDIAONPLAY: false
-  USE_PATH_MAPPING: false
+  WEBHOOKPORT: "9000"
+  PROCADDEDMEDIA: "false"
+  PROCMEDIAONPLAY: "false"
+  USE_PATH_MAPPING: "false"
   MODEL_PATH: "/share/subgen/models"
-  DEBUG: false
-
-schema:
-  WHISPER_MODEL: str
-  TRANSCRIBE_DEVICE: str
-  CONCURRENT_TRANSCRIPTIONS: int
-  WHISPER_THREADS: int
-  TRANSCRIBE_OR_TRANSLATE: str
-  WEBHOOKPORT: int
-  PROCADDEDMEDIA: bool
-  PROCMEDIAONPLAY: bool
-  USE_PATH_MAPPING: bool
-  MODEL_PATH: str
-  DEBUG: bool
+  DEBUG: "false"
