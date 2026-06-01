@@ -44,4 +44,4 @@ echo "[SubGen] Looking for subgen.env, checking locations:"
 find / -name "subgen.env" 2>/dev/null
 echo "[SubGen] SubGen working directory:"
 ls /subgen/
-exec python3 /subgen/subgen.py
+cd /subgen && exec python3 /subgen/launcher.py
