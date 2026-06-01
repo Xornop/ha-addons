@@ -13,6 +13,7 @@ ports_description:
   9000/tcp: "ASR webservice port (use this in Bazarr)"
 options:
   WHISPER_MODEL: "medium"
+  COMPUTE_TYPE: "int8"
   TRANSCRIBE_DEVICE: "cpu"
   CONCURRENT_TRANSCRIPTIONS: "1"
   WHISPER_THREADS: "4"
@@ -22,6 +23,7 @@ options:
   DEBUG: false
 schema:
   WHISPER_MODEL: "list(tiny|base|small|medium|large-v2|large-v3|distil-large-v3)"
+  COMPUTE_TYPE: "list(int8|float16|float32|int8_float16)"
   TRANSCRIBE_DEVICE: "list(cpu|cuda)"
   CONCURRENT_TRANSCRIPTIONS: "str"
   WHISPER_THREADS: "str"
