@@ -1,4 +1,5 @@
 ARG BUILD_FROM
+FROM ghcr.io/qdm12/gluetun:v3.41.1 AS gluetun
 FROM $BUILD_FROM
 
 RUN apk add --no-cache \
@@ -8,7 +9,8 @@ RUN apk add --no-cache \
     wireguard-tools \
     tzdata
 
-COPY --from=ghcr.io/qdm12/gluetun:v3.41.1 /gluetun-entrypoint /usr/local/bin/gluetun
+COPY --from=gluetun /gluetun-entrypoint /usr/local/bin/gluetun
+COPY --from=gluetun /etc/ssl/certs /etc/ssl/certs
 
 RUN mkdir -p /gluetun
 
