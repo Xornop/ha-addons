@@ -8,7 +8,8 @@ RUN apk add --no-cache --update \
     iptables \
     iptables-legacy \
     tzdata \
-    wireguard-tools
+    wireguard-tools \
+    unbound
 
 # Install OpenVPN 2.5 en 2.6
 RUN apk add --no-cache --update -X "https://dl-cdn.alpinelinux.org/alpine/v3.17/main" openvpn~2.5 && \
