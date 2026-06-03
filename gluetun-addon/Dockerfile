@@ -1,22 +1,32 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-RUN apk add --no-cache \
+RUN apk add --no-cache --update \
+    go \
+    git \
     ca-certificates \
     iptables \
     iptables-legacy \
-    wireguard-tools \
     tzdata \
-    openvpn
+    wireguard-tools
 
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /gluetun-entrypoint /usr/local/bin/gluetun
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /etc/ssl /etc/ssl
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /usr/sbin/openvpn2.5 /usr/sbin/openvpn2.5
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /usr/sbin/openvpn2.6 /usr/sbin/openvpn2.6
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /usr/lib/unbound /usr/lib/unbound
-COPY --from=ghcr.io/qdm12/gluetun:v3.39.0 /usr/sbin/unbound /usr/sbin/unbound
+# Install OpenVPN 2.5 en 2.6
+RUN apk add --no-cache --update -X "https://dl-cdn.alpinelinux.org/alpine/v3.17/main" openvpn~2.5 && \
+    mv /usr/sbin/openvpn /usr/sbin/openvpn2.5 && \
+    apk del openvpn && \
+    apk add --no-cache --update openvpn && \
+    mv /usr/sbin/openvpn /usr/sbin/openvpn2.6 && \
+    rm -rf /var/cache/apk/*
 
-RUN mkdir -p /gluetun /tmp/gluetun
+# Build Gluetun from source
+ARG GLUETUN_VERSION=v3.39.0
+RUN git clone --depth 1 --branch ${GLUETUN_VERSION} https://github.com/qdm12/gluetun.git /tmp/gluetun && \
+    cd /tmp/gluetun && \
+    go build -o /usr/local/bin/gluetun ./cmd/gluetun && \
+    chmod 755 /usr/local/bin/gluetun && \
+    rm -rf /tmp/gluetun
+
+RUN mkdir -p /gluetun
 
 COPY run.sh /addon/run.sh
 COPY s6-services/ /etc/services.d/
