@@ -17,20 +17,22 @@ if bashio::config.has_value 'wireguard_private_key'; then
     export WIREGUARD_ADDRESSES="$(bashio::config 'wireguard_addresses')"
 fi
 
+# Gluetun verwacht SHADOWSOCKS, niet SHADOWSOCKS_ENABLED
 if bashio::config.true 'shadowsocks_enabled'; then
-    export SHADOWSOCKS_ENABLED="on"
+    export SHADOWSOCKS="on"
     export SHADOWSOCKS_PORT="$(bashio::config 'shadowsocks_port' '8388')"
     export SHADOWSOCKS_PASSWORD="$(bashio::config 'shadowsocks_password' 'gluetun')"
     export SHADOWSOCKS_METHOD="$(bashio::config 'shadowsocks_method' 'aes-256-gcm')"
 else
-    export SHADOWSOCKS_ENABLED="off"
+    export SHADOWSOCKS="off"
 fi
 
+# Gluetun verwacht HTTPPROXY, niet HTTPPROXY_ENABLED
 if bashio::config.true 'http_proxy_enabled'; then
-    export HTTPPROXY_ENABLED="on"
+    export HTTPPROXY="on"
     export HTTPPROXY_PORT="$(bashio::config 'http_proxy_port' '8888')"
 else
-    export HTTPPROXY_ENABLED="off"
+    export HTTPPROXY="off"
 fi
 
 export DOT="off"
