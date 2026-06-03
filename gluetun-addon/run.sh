@@ -17,7 +17,7 @@ if bashio::config.has_value 'wireguard_private_key'; then
     export WIREGUARD_ADDRESSES="$(bashio::config 'wireguard_addresses')"
 fi
 
-if bashio::config.has_value 'shadowsocks_enabled' && [ "$(bashio::config 'shadowsocks_enabled')" = "true" ]; then
+if bashio::config.true 'shadowsocks_enabled'; then
     export SHADOWSOCKS_ENABLED="on"
     export SHADOWSOCKS_PORT="$(bashio::config 'shadowsocks_port' '8388')"
     export SHADOWSOCKS_PASSWORD="$(bashio::config 'shadowsocks_password' 'gluetun')"
@@ -26,7 +26,7 @@ else
     export SHADOWSOCKS_ENABLED="off"
 fi
 
-if [ "$(bashio::config 'http_proxy_enabled')" = "true" ]; then
+if bashio::config.true 'http_proxy_enabled'; then
     export HTTPPROXY_ENABLED="on"
     export HTTPPROXY_PORT="$(bashio::config 'http_proxy_port' '8888')"
 else
