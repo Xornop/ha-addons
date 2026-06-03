@@ -50,4 +50,5 @@ export LOG_LEVEL="info"
 export FIREWALL_ENABLED_DISABLING_IT_SHOOTS_YOU_IN_YOUR_FOOT=on
 
 bashio::log.info "Starting Gluetun VPN..."
+export PPROF_ENABLED=off
 exec /usr/local/bin/gluetun
