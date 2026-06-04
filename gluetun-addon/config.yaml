@@ -38,6 +38,7 @@ options:
   http_proxy_port: 8888
   dns_providers: ""
   tz: ""
+  server_countries: ""
 schema:
   vpn_provider: str
   vpn_type: list(openvpn|wireguard)
@@ -53,6 +54,7 @@ schema:
   http_proxy_port: int(1024,65535)
   dns_providers: str?
   tz: str?
+  server_countries: str?
 ports:
   8888/tcp: 8888
   8388/tcp: 8388
