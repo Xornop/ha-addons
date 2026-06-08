@@ -1,0 +1,29 @@
+name: "Whisper ASR Webservice"
+description: "Automatic subtitle generation using OpenAI Whisper via the whisper-asr-webservice. Processes audio in chunks for low memory usage. Can be used as a subtitle provider in Bazarr."
+version: "1.0.0"
+slug: "whisper-asr"
+init: false
+arch:
+  - amd64
+  - aarch64
+
+ports:
+  9001/tcp: 9001
+ports_description:
+  9001/tcp: "ASR webservice port (use this in Bazarr)"
+
+options:
+  ASR_MODEL: "small"
+  ASR_ENGINE: "faster_whisper"
+  ASR_COMPUTE_TYPE: "int8"
+  WHISPER_LANG: "ja"
+  WHISPER_TASK: "translate"
+  ASR_PORT: "9001"
+
+schema:
+  ASR_MODEL: "list(tiny|base|small|medium|large-v1|large-v2|large-v3)"
+  ASR_ENGINE: "list(faster_whisper|openai_whisper)"
+  ASR_COMPUTE_TYPE: "list(int8|float16|float32|int8_float16)"
+  WHISPER_LANG: "str"
+  WHISPER_TASK: "list(transcribe|translate)"
+  ASR_PORT: "str"
