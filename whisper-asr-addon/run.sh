@@ -46,4 +46,4 @@ ls / | grep -i entry 2>/dev/null
 which uvicorn 2>/dev/null
 which python3 2>/dev/null
 
-exec gunicorn --bind "0.0.0.0:${ASR_PORT}" --workers 1 --timeout 0 "app.webservice:app" -k uvicorn.workers.UvicornWorker
+exec /app/.venv/bin/uvicorn app.webservice:app --host 0.0.0.0 --port "${ASR_PORT}"
