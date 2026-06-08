@@ -1,3 +1,5 @@
+- not maintained. it works, but my subgen addon can handle larger movies - whisper asr addon is faster though -
+
 # Whisper ASR Webservice
 
 This addon runs [whisper-asr-webservice](https://github.com/ahmetoner/whisper-asr-webservice) as a Home Assistant addon. It uses OpenAI Whisper to automatically generate subtitles, and provides an ASR API that Bazarr can use as a subtitle provider.
