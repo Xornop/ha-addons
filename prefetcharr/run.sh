@@ -10,6 +10,8 @@ PREFETCH_NUM=$(bashio::config 'prefetch_num')
 REQUEST_SEASONS=$(bashio::config 'request_seasons')
 LOG_LEVEL=$(bashio::config 'log_level')
 
+CONNECTION_RETRIES=$(bashio::config 'connection_retries')
+
 CONFIG_FILE=/tmp/prefetcharr.toml
 
 cat > "${CONFIG_FILE}" << TOML
@@ -17,6 +19,7 @@ interval = ${INTERVAL}
 log_level = "${LOG_LEVEL}"
 prefetch_num = ${PREFETCH_NUM}
 request_seasons = ${REQUEST_SEASONS}
+connection_retries = ${CONNECTION_RETRIES}
 
 [media_server]
 type = "${MEDIA_SERVER_TYPE}"
