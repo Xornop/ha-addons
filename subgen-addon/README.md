@@ -8,9 +8,9 @@ DO NOT COMPLAIN IF IT FAILS - YOU PROBABLY RAN OUT OF RAM - TESTED WITH 16GB RAM
 
 ## Installation
 
-1. In Home Assistant, navigate to **Settings → Apps → App Store**
+1. In Home Assistant, navigate to **Settings → Apps → Install App**
 2. Click on the **three dots** (top right) → **Repositories**
-3. Add `https://github.com/Xornop/ha-Apps`
+3. Add `https://github.com/Xornop/ha-apps`
 4. Search for **SubGen** and install the App
 
 ## Settings
