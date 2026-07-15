@@ -1,13 +1,13 @@
-# Gluetun VPN Add-on for Home Assistant
+# Gluetun VPN App for Home Assistant
 
-A Home Assistant add-on that provides a VPN client for multiple providers using [Gluetun](https://github.com/qdm12/gluetun).
+A Home Assistant App that provides a VPN client for multiple providers using [Gluetun](https://github.com/qdm12/gluetun).
 
 ## Installation
 
-1. Add this repository to your Home Assistant add-on store
-2. Install the **Gluetun VPN** add-on
+1. Add this repository to your Home Assistant App store
+2. Install the **Gluetun VPN** App
 3. Configure your VPN settings (see below)
-4. Start the add-on
+4. Start the App
 
 ## Configuration
 
@@ -51,6 +51,6 @@ tz: Europe/Amsterdam
 
 ## Notes
 
-- This add-on requires `NET_ADMIN` privileges to manage network routing
+- This App requires `NET_ADMIN` privileges to manage network routing
 - Built on Gluetun v3.39.0
-- Based on [m2sh/ha-addon-gluetun](https://github.com/m2sh/ha-addon-gluetun)
+- Based on [m2sh/ha-app-gluetun](https://github.com/m2sh/ha-app-gluetun)
