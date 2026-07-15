@@ -1,4 +1,4 @@
-- not maintained. it works, but my subgen addon can handle larger movies - whisper asr addon is faster though -
+- not maintained. it works, but my subgen app can handle larger movies - whisper asr app is faster though -
 
 # Whisper ASR Webservice
 
