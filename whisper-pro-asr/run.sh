@@ -56,7 +56,7 @@ echo "  Debug:                 $DEBUG"
 
 echo "[Whisper Pro ASR] Locating entry point..."
 ENTRY=""
-for candidate in /app/whisper_server.py /whisper_server.py /app/whisper_server/whisper_server.py; do
+for candidate in /app/whisper_pro_asr.py /whisper_pro_asr.py /app/whisper_server.py /whisper_server.py; do
     if [ -f "$candidate" ]; then
         ENTRY="$candidate"
         break
@@ -64,8 +64,8 @@ for candidate in /app/whisper_server.py /whisper_server.py /app/whisper_server/w
 done
 
 if [ -z "$ENTRY" ]; then
-    echo "[Whisper Pro ASR] whisper_server.py not found in common paths, searching filesystem..."
-    ENTRY=$(find / -maxdepth 4 -name "whisper_server.py" 2>/dev/null | head -n 1)
+    echo "[Whisper Pro ASR] Entry point not found in common paths, searching filesystem..."
+    ENTRY=$(find / -maxdepth 4 \( -name "whisper_pro_asr.py" -o -name "whisper_server.py" \) 2>/dev/null | head -n 1)
 fi
 
 if [ -n "$ENTRY" ]; then
